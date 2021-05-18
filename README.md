@@ -1,4 +1,12 @@
-## Termos e acordos
+# Resumo
+
+Este foi o último projeto solo do módulo de Front-end da Trybe, e como foi um projeto com um tema Maaaravilhoso, e com funcionalidades que gosto muito de implementar como pesquisas, filtros e ordenação utilizando HOF, decidi deixá-lo com a minha cara.
+
+
+### Abaixo seguem as diretrizes sob as quais o projeto foi executado:
+
+
+### Termos e acordos
 
 Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.
 
