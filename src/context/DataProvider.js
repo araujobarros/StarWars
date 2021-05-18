@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import DataContext from './DataContext';
 
 function DataProvider({ children }) {
@@ -19,6 +18,23 @@ function DataProvider({ children }) {
     column: 'name',
     sort: 'ASC',
   });
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height,
+    };
+  }
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const contextValue = {
     data,
@@ -31,6 +47,7 @@ function DataProvider({ children }) {
     setParameterList,
     order,
     setOrder,
+    windowDimensions,
   };
 
   const url = 'https://swapi-trybe.herokuapp.com/api/planets/';
@@ -47,6 +64,8 @@ function DataProvider({ children }) {
     })();
   }, []);
 
+  // https://qastack.com.br/programming/36862334/get-viewport-window-height-in-reactjs
+
   return (
     <DataContext.Provider
       value={ { ...contextValue } }
@@ -55,9 +74,5 @@ function DataProvider({ children }) {
     </DataContext.Provider>
   );
 }
-
-DataProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default DataProvider;
