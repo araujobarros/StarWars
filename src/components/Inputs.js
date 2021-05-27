@@ -108,9 +108,6 @@ function Inputs() {
         >
           <div className={ classSaber }>
             <GiLightSabers className="subtitle light-saber" />
-            {/* <span aria-hidden="true" />
-              <span aria-hidden="true" />
-              <span aria-hidden="true" /> */}
           </div>
         </button>
       );
@@ -120,7 +117,6 @@ function Inputs() {
   return (
     <nav className="navbar is-light" role="navigation" aria-label="main navigation">
       <div className="columns is-vcentered brandContainer">
-
         <div className="column navbar-brand is-3">
           <div className="columns is-vcentered is-mobile brandInside">
             <div className="column mx-2 mt-2 navbar-item is-3">
@@ -134,10 +130,8 @@ function Inputs() {
             </div>
           </div>
         </div>
-
         <div className="column navbar-start  ml-2">
           <div className={ `${classMenu} columns is-vcentered` }>
-            {/* Aqui vai o input de escrever */}
             <div className="column navbar-item is-1">
               <input
                 data-testid="name-filter"
@@ -147,8 +141,6 @@ function Inputs() {
                 onChange={ handleChangeInputText }
               />
             </div>
-
-            {/* Aqui vão os inputs de filtro */}
             <div className="column navbar-item">
               <div className="columns is-mobile is-vcentered">
                 <span className="navbar-item column is-4">
@@ -160,7 +152,6 @@ function Inputs() {
                     </select>
                   </div>
                 </span>
-
                 <span className="navbar-item column is-4">
                   <div className="select is-multiple is-small">
                     <select className="" data-testid="comparison-filter" onChange={ (event) => handleChange(event, setComparison) }>
@@ -170,7 +161,6 @@ function Inputs() {
                     </select>
                   </div>
                 </span>
-
                 <span className="navbar-item column is-4 ">
                   <input
                     data-testid="value-filter"
@@ -182,15 +172,11 @@ function Inputs() {
                 </span>
               </div>
             </div>
-
-            {/* Aqui vai o botão de filtro */}
             <div className="column navbar-item">
               <div className="buttons is-centered">
                 <button data-testid="button-filter" type="button" className="button" onClick={ handleClickNumericFilter }>Add filtro</button>
               </div>
             </div>
-
-            {/* Aqui vai o campo para receber os filtros ativos */}
             <div className="column navbar-item">
               <div className="navbar-item activated-filter">
                 {activatedFilters.map((filter) => (
@@ -205,11 +191,8 @@ function Inputs() {
                 ))}
               </div>
             </div>
-
-            {/* Aqui vão os inputs de ordenação */}
             <div className="column navbar-item">
               <div className="columns is-vcentered is-mobile ml-1">
-
                 <div className="column is-6">
                   <div className="select is-multiple">
                     <select
@@ -224,7 +207,6 @@ function Inputs() {
                     </select>
                   </div>
                 </div>
-
                 <div className="navbar-item column is-6 ">
                   <label htmlFor="answer" className="radio is-small">
                     <input data-testid="column-sort-input-asc" type="radio" name="answer" value="ASC" onClick={ handleRadio } />
@@ -237,8 +219,6 @@ function Inputs() {
                 </div>
               </div>
             </div>
-
-            {/* Aqui vai o botã o de ordenação */}
             <div className="column navbar-item">
               <div className="buttons is-centered">
                 <button data-testid="column-sort-button" type="button" className="button" onClick={ handleClickOrder }>Ordenar</button>
@@ -246,7 +226,6 @@ function Inputs() {
             </div>
           </div>
         </div>
-
       </div>
     </nav>
   );
