@@ -3,6 +3,9 @@
 
 ![Preview](src/imgs/star_wars_preview.gif)
 
+<p align="center">
+  <img src="src/imgs/star_wars_preview.gif" />
+</p>
 
 Este foi o último projeto solo do módulo de Front-end da Trybe, e como foi um projeto com um tema Maaaravilhoso, e com funcionalidades que gosto muito de implementar como pesquisas, filtros e ordenação utilizando HOF, decidi deixá-lo com a minha cara.
 Utilizei a biblioteca Bulma para estilização.
