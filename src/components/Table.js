@@ -112,7 +112,7 @@ function Table() {
     const isFilmsCell = filmsList.some((film) => film === row[field]);
     const urlList = updatedFilter.map((objectPlamet) => objectPlamet.url);
     const isUrlCell = urlList.some((url) => url === row[field]);
-    const FACTORTOCORRECTFILM = 2;
+    const FACTOR_TO_FIND_NUMBER_IN_URL_FILM = 2;
 
     if (isPlanetCell === true) {
       return (
@@ -133,7 +133,7 @@ function Table() {
               <ul className="menu-list" key={ film }>
                 <a href={ film } ref={ createRef }>
                   <p className="td-content">
-                    {films[parseInt(film[film.length - FACTORTOCORRECTFILM], 10) - 1]}
+                    {films[film[film.length - FACTOR_TO_FIND_NUMBER_IN_URL_FILM] - 1]}
                   </p>
                 </a>
               </ul>),
