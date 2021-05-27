@@ -1,0 +1,344 @@
+@import "./variables.sass";
+@import "~bulma/bulma.sass";
+@import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
+
+@font-face {
+	font-family: 'Star Jedi';
+	font-display: swap;
+	font-style: normal;
+	font-weight: normal;
+	src: url('./fonts/StarJedi.eot');
+	src: url('./fonts/StarJedi.eot?#iefix') format('embedded-opentype'),
+			url('./fonts/Starjedi.ttf') format('truetype');
+}
+
+
+html{
+	background: linear-gradient(#303333, #190824);
+	background-attachment: fixed;
+}
+
+.title {
+	font-size: 380%;
+}
+
+.jediFont {
+	font-family: 'Star Jedi';
+	text-align: center;
+}
+
+.light-saber {
+	font-size: 140%;
+	margin-top: 10px;
+}
+
+.button-saber {
+	margin-right: 10px;
+}
+
+table {
+	border-collapse: collapse;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+	overflow: hidden;
+}
+
+.activated-filter {
+	align-content: space-around;
+	align-items: flex-end;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	width: 400px;
+}
+
+th,
+td {
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+	padding: 15px;
+}
+
+th {
+	text-align: left;
+}
+
+thead {
+	th {
+		background-color: #55608f;
+	}
+}
+
+tbody {
+	tr {
+		&:hover {
+			background-color: rgba(255,255,255,0.3);
+		}
+	}
+	td {
+		position: relative;
+		&:hover {
+			&:before {
+				background-color: rgba(255,255,255,0.2);
+				bottom: -9999px;
+				content: "";
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: -9999px;
+				z-index: -1;
+			}
+		}
+	}
+}
+
+.load {
+	align-items: center;
+	align-content: center;
+	animation: loading linear 5s;
+	animation-iteration-count: infinite;
+	display: flex;
+	font-size: 100px;
+	left: 49%;
+	position:relative;
+  top: 100px;
+	width: 50px;
+}
+
+@keyframes loading {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@media only screen and  (max-width: 812px) {
+
+	body{
+		width: 100%;
+	}
+
+	.brandContainer {
+		width: 100% !important;
+	}
+
+	.navbar-brand {
+		height: 145px !important;
+		width:100%;
+	}
+
+	.button-saber {
+		width: 16px;
+	}
+
+	.sabcontainer {
+		right: -20px !important;
+		width: fit-content !important;
+	}
+
+	.brandInside {
+		margin: 0% !important;
+		width: 100% !important;
+	}
+
+	.load {
+		display: none;
+	}
+
+	.navbar {
+		height: fit-content;
+		width: 100%;
+	}
+
+	.navbar-start {
+		height: 0px;
+		position: absolute;
+		top: 120px;
+		width:100%;
+	}
+
+	.navbar-menu{
+	 display: none;
+	}
+
+	.navbar-menu.is-active {
+		position:relative;
+		width:108%;
+	}
+
+	.activated-filter {
+		width: 360px
+	}
+
+	.intro_text {
+    color: #00BFFF;
+    font-family: "News Cycle";
+		font-size:xx-large;
+    font-weight: 400;
+    letter-spacing: .1em;
+		padding: 50% 10px 60% 10px;
+		text-align: justify;
+	}
+
+	.intro_animacao {
+		animation: intro 3s ease-out ;
+		animation-fill-mode: forwards;
+	}
+
+	.arrows {
+		text-align: center;
+	}
+
+	.arrow_1 {
+		animation: arrowOne 3s  linear 3.3s;
+		animation-direction: normal;
+		animation-iteration-count: infinite;
+		animation-fill-mode: backwards;
+	}
+	.arrow_2 {
+		animation: arrowTwo 3s  linear 3.2s;
+		animation-direction: normal;
+		animation-iteration-count: infinite;
+		animation-fill-mode: backwards;
+	}
+	.arrow_3 {
+		animation: arrowTree 3s  linear 3.1s;
+		animation-direction: normal;
+		animation-iteration-count: infinite;
+		animation-fill-mode: backwards;
+	}
+
+	@keyframes intro {
+		0% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
+		}
+		70% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	@keyframes arrowOne {
+		0% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
+		}
+		70% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	@keyframes arrowTwo {
+		0% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
+		}
+		70% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	@keyframes arrowTree {
+		0% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
+		}
+		70% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+
+	.clockwise {
+		animation: clock 0.3s ease-out ;
+		
+	}
+
+	@keyframes clock {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	.counterClockwise {
+		animation: counterClock 0.3s ease-out ;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes counterClock {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(-405deg);
+		}
+	}
+
+
+
+	html{
+		background-attachment: fixed;
+		background-blend-mode: darken;
+		background-image: url("./imgs/QuRfn9.png");
+		background-repeat: no-repeat;
+		background-size: auto;
+	}
+
+	table { 
+		border: 0;
+		width: fit-content;
+	}
+
+	table thead { 
+		display: none; 
+	}
+	
+	table tr {
+		display: block;
+		margin-bottom: 2em;
+	}
+	
+	table td {
+		display: block;
+		position: relative;
+		word-wrap:break-word;
+		
+	}
+
+	.rotated {
+		transform: rotate(45deg);
+	}
+
+	.td-content {
+    color: #FFD700;
+		font-family: "News Cycle", sans-serif;
+    font-weight: 700;
+    letter-spacing: .1em;
+    line-height: 1.1em;
+    text-align: center;
+    transform: perspective(300px) rotateX(40deg);
+    transform-origin: 50%;
+		width: 100%;
+		z-index: 1;
+	}
+}

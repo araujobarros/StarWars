@@ -19,6 +19,23 @@ function DataProvider({ children }) {
     column: 'name',
     sort: 'ASC',
   });
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height,
+    };
+  }
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const contextValue = {
     data,
@@ -31,6 +48,7 @@ function DataProvider({ children }) {
     setParameterList,
     order,
     setOrder,
+    windowDimensions,
   };
 
   const url = 'https://swapi-trybe.herokuapp.com/api/planets/';
@@ -46,6 +64,8 @@ function DataProvider({ children }) {
       setLoad(false);
     })();
   }, []);
+
+  // https://qastack.com.br/programming/36862334/get-viewport-window-height-in-reactjs
 
   return (
     <DataContext.Provider
