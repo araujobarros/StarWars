@@ -100,7 +100,7 @@ function Inputs() {
   }
 
   function renderSaberButton() {
-    const MAXDIMENSION = 760;
+    const MAXDIMENSION = 812;
     if (windowDimensions.width < MAXDIMENSION) {
       return (
         <button

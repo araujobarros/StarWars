@@ -4,7 +4,7 @@ import { FaGalacticRepublic } from 'react-icons/fa';
 import DataContext from '../context/DataContext';
 
 function Table() {
-  const MAXWIDTH = 760;
+  const MAXWIDTH = 812;
   const DIVFACTOR = 30;
   const EMPTY = 0;
 
