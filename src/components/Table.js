@@ -4,6 +4,10 @@ import { FaGalacticRepublic } from 'react-icons/fa';
 import DataContext from '../context/DataContext';
 
 function Table() {
+  const MAXWIDTH = 760;
+  const DIVFACTOR = 30;
+  const EMPTY = 0;
+
   const { data,
     isLoading,
     filters,
@@ -56,11 +60,17 @@ function Table() {
   filterList.forEach((objectToFilter) => {
     const { column, comparison, value } = objectToFilter;
     if (value && comparison === 'maior que') {
-      updatedFilter = updatedFilter.filter((row) => (parseInt(row[column]) > parseInt(value)));
+      updatedFilter = updatedFilter.filter(
+        (row) => (parseInt(row[column], 10) > parseInt(value, 10)),
+      );
     } else if (value && comparison === 'menor que') {
-      updatedFilter = updatedFilter.filter((row) => (parseInt(row[column]) < parseInt(value)));
+      updatedFilter = updatedFilter.filter(
+        (row) => (parseInt(row[column], 10) < parseInt(value, 10)),
+      );
     } else if (value) {
-      updatedFilter = updatedFilter.filter((row) => (parseInt(row[column]) === parseInt(value)));
+      updatedFilter = updatedFilter.filter(
+        (row) => (parseInt(row[column], 10) === parseInt(value, 10)),
+      );
     }
   });
 
@@ -68,21 +78,23 @@ function Table() {
 
   function createRef(el) {
     if (!el) return el;
-    el.style.fontSize = (width < 760) ? `${height / 30}px` : '0.9em';
+    el.style.fontSize = (width < MAXWIDTH) ? `${height / DIVFACTOR}px` : '0.9em';
     window.addEventListener('scroll',
       () => {
         const position = el.getBoundingClientRect().y;
-        if (position <= height && width < 760) {
-          el.style.fontSize = `${el.getBoundingClientRect().y / 30}px`;
+        if (position <= height && width < MAXWIDTH) {
+          el.style.fontSize = `${el.getBoundingClientRect().y / DIVFACTOR}px`;
         }
       });
   }
 
   function renderIntroduction() {
-    if (width < 760) {
+    if (width < MAXWIDTH) {
       return (
         <section className="intro_text">
-          <p className="intro_animacao block">A Long Time Ago, in a galaxy far, far away ...</p>
+          <p className="intro_animacao block">
+            A Long Time Ago, in a galaxy far, far away ...
+          </p>
           <div className="arrows">
             <div className="arrow_1"><IoIosArrowUp /></div>
             <div className="arrow_2"><IoIosArrowUp /></div>
@@ -100,12 +112,13 @@ function Table() {
     const isFilmsCell = filmsList.some((film) => film === row[field]);
     const urlList = updatedFilter.map((objectPlamet) => objectPlamet.url);
     const isUrlCell = urlList.some((url) => url === row[field]);
+    const FACTORTOCORRECTFILM = 2;
 
     if (isPlanetCell === true) {
       return (
         <td>
           <p className="td-content" ref={ createRef }>
-            {(width < 760) ? `${field}: ${row[field]}` : row[field]}
+            {(width < MAXWIDTH) ? `${field}: ${row[field]}` : row[field]}
           </p>
         </td>
       );
@@ -113,13 +126,15 @@ function Table() {
       return (
         <td className="menu">
           <p className="td-content" ref={ createRef }>
-            { (width < 760) ? `${field}:` : ''}
+            { (width < MAXWIDTH) ? `${field}:` : ''}
           </p>
           {row[field].map(
             (film) => (
               <ul className="menu-list" key={ film }>
                 <a href={ film } ref={ createRef }>
-                  <p className="td-content">{films[parseInt(film[film.length - 2]) - 1]}</p>
+                  <p className="td-content">
+                    {films[parseInt(film[film.length - FACTORTOCORRECTFILM], 10) - 1]}
+                  </p>
                 </a>
               </ul>),
           )}
@@ -137,13 +152,13 @@ function Table() {
     return (
       <td key={ row[field] } title={ row[field] }>
         <p className="td-content" ref={ createRef }>
-          {(width < 760) ? `${field}: ${row[field]}` : row[field]}
+          {(width < MAXWIDTH) ? `${field}: ${row[field]}` : row[field]}
         </p>
       </td>
     );
   }
 
-  if (!isLoading && data.length !== 0) {
+  if (!isLoading && data.length !== EMPTY) {
     const fields = Object.keys(data[0]);
     const fieldsFiltered = fields.filter(
       (field) => (

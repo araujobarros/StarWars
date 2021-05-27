@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import DataContext from './DataContext';
 
 function DataProvider({ children }) {
@@ -74,5 +75,9 @@ function DataProvider({ children }) {
     </DataContext.Provider>
   );
 }
+
+DataProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default DataProvider;
