@@ -1,10 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
-import ReactDOM from 'react-dom';
 import { IoIosArrowUp } from 'react-icons/io';
 import { FaGalacticRepublic } from 'react-icons/fa';
 import DataContext from '../context/DataContext';
-
-// teste
 
 function Table() {
   const { data,
@@ -13,25 +10,21 @@ function Table() {
     order,
     windowDimensions } = useContext(DataContext);
 
-  const [films] = useState(['A New Hope', 'The Empire Strikes Back', 'Return of the Jedi', 'The Phantom Menace', 'Attack of the Clones', 'Revenge of the Sith']);
-  const [size, setSize] = useState('0.9em');
+  const [films] = useState(
+    ['A New Hope',
+      'The Empire Strikes Back',
+      'Return of the Jedi',
+      'The Phantom Menace',
+      'Attack of the Clones',
+      'Revenge of the Sith'],
+  );
 
   useEffect(() => {
-    // console.log(isLoading);
   }, [isLoading]);
-
-  // useEffect(() => {
-  //   window.addEventListener('resize',
-  //     () => setSize(
-  //       (`${parseFloat(size) - 0.05}em`),
-  //     ));
-  // }, [size]);
 
   const filterByText = () => data.filter(
     (row) => row.name.includes(filters.filterByName.name),
   );
-
-  // criar uma função para sort aqui com os parâmetros do context
 
   const sortNumbers = (column, sort) => {
     if (sort === 'ASC') {
@@ -57,34 +50,19 @@ function Table() {
   };
 
   let updatedFilter = applyOrder(order.column, order.sort);
-  // let updatedFilter = filterByText().sort((a, b) => a.name.localeCompare(b.name));
-  // console.log(updatedFilter);
 
   const filterList = filters.filterByNumericValues;
-  // console.log(filterList);
 
   filterList.forEach((objectToFilter) => {
     const { column, comparison, value } = objectToFilter;
     if (value && comparison === 'maior que') {
-      // console.log({ column, comparison, value });
       updatedFilter = updatedFilter.filter((row) => (parseInt(row[column]) > parseInt(value)));
-      // console.log('if1');
     } else if (value && comparison === 'menor que') {
-      // console.log({ column, comparison, value });
       updatedFilter = updatedFilter.filter((row) => (parseInt(row[column]) < parseInt(value)));
-      // console.log('if2');
     } else if (value) {
-      // console.log({ column, comparison, value });
       updatedFilter = updatedFilter.filter((row) => (parseInt(row[column]) === parseInt(value)));
-      // console.log('if2');
     }
   });
-
-  // const filterByNumber = () => {
-
-  // };
-
-  // console.log(useWindowDimensions());
 
   const { height, width } = windowDimensions;
 
@@ -166,22 +144,16 @@ function Table() {
   }
 
   if (!isLoading && data.length !== 0) {
-    // console.log(data[0]);
     const fields = Object.keys(data[0]);
-    // console.log(fields);
     const fieldsFiltered = fields.filter(
       (field) => (
         field !== 'residents'
       ),
     );
-    // console.log(fieldsFiltered);
     return (
       <div className="block">
         {renderIntroduction()}
         <section>
-          {/* {productsFromMLB.map(
-          (product) => (<ProductCard exemploProps={ product } key={ product.id } />),
-        )} */}
           <table>
             <thead>
               <tr>
@@ -213,16 +185,5 @@ function Table() {
     <div className="load"><FaGalacticRepublic /></div>
   );
 }
-
-// Table.propTypes = {
-//   movie: PropTypes.shape({
-//     title: PropTypes.string,
-//     subtitle: PropTypes.string,
-//     storyline: PropTypes.string,
-//     rating: PropTypes.number,
-//     imagePath: PropTypes.string,
-//     id: PropTypes.string,
-//   }).isRequired,
-// };
 
 export default Table;
