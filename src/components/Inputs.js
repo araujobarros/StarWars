@@ -72,10 +72,6 @@ function Inputs() {
     setcolumnFilter(parameterList[0]);
   }, [filters, parameterList]);
 
-  useEffect(() => {
-    setcolumnFilter(parameterList[0]);
-  }, [filters, parameterList]);
-
   function handleClickAtivatedFilter({ target }) {
     const { filterByNumericValues } = filters;
     setFilter({
