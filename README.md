@@ -1,8 +1,6 @@
 
 # Resumo
 
-![Preview](src/imgs/star_wars_preview.gif)
-
 <p align="center">
   <img src="src/imgs/star_wars_preview.gif" />
 </p>
