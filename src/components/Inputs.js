@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import React, { useState, useContext, useEffect } from 'react';
 import { FaGalacticRepublic } from 'react-icons/fa';
 import { GiLightSabers } from 'react-icons/gi';
@@ -79,9 +80,13 @@ function Inputs() {
     const { filterByNumericValues } = filters;
     setFilter({
       ...filters,
-      filterByNumericValues: filterByNumericValues.filter((filter) => filter.column !== target.value),
+      filterByNumericValues: filterByNumericValues.filter(
+        (filter) => filter.column !== target.value,
+      ),
     });
-    setActivatedFilters(activatedFilters.filter((filter) => filter.column !== target.value));
+    setActivatedFilters(activatedFilters.filter(
+      (filter) => filter.column !== target.value,
+    ));
     setParameterList([target.value, ...parameterList]);
   }
 
@@ -99,7 +104,8 @@ function Inputs() {
   }
 
   function renderSaberButton() {
-    if (windowDimensions.width < 760) {
+    const MAXDIMENSION = 760;
+    if (windowDimensions.width < MAXDIMENSION) {
       return (
         <button
           type="button"
@@ -112,6 +118,23 @@ function Inputs() {
         </button>
       );
     }
+  }
+
+  function renderComparationList() {
+    return (
+      <span className="navbar-item column is-4">
+        <div className="select is-multiple is-small">
+          <select
+            data-testid="comparison-filter"
+            onChange={ (event) => handleChange(event, setComparison) }
+          >
+            <option>maior que</option>
+            <option>menor que</option>
+            <option>igual a</option>
+          </select>
+        </div>
+      </span>
+    );
   }
 
   return (
@@ -145,22 +168,21 @@ function Inputs() {
               <div className="columns is-mobile is-vcentered">
                 <span className="navbar-item column is-4">
                   <div className="select is-multiple is-small">
-                    <select className="" data-testid="column-filter" onChange={ (event) => handleChange(event, setcolumnFilter) } onSelect="teste">
+                    <select
+                      data-testid="column-filter"
+                      onChange={ (event) => handleChange(event, setcolumnFilter) }
+                      onSelect="teste"
+                    >
                       {parameterList.map(
-                        (parameter) => <option key={ parameter } value={ parameter }>{parameter}</option>,
+                        (parameter) => (
+                          <option key={ parameter } value={ parameter }>
+                            {parameter}
+                          </option>),
                       )}
                     </select>
                   </div>
                 </span>
-                <span className="navbar-item column is-4">
-                  <div className="select is-multiple is-small">
-                    <select className="" data-testid="comparison-filter" onChange={ (event) => handleChange(event, setComparison) }>
-                      <option>maior que</option>
-                      <option>menor que</option>
-                      <option>igual a</option>
-                    </select>
-                  </div>
-                </span>
+                {renderComparationList()}
                 <span className="navbar-item column is-4 ">
                   <input
                     data-testid="value-filter"
@@ -174,7 +196,14 @@ function Inputs() {
             </div>
             <div className="column navbar-item">
               <div className="buttons is-centered">
-                <button data-testid="button-filter" type="button" className="button" onClick={ handleClickNumericFilter }>Add filtro</button>
+                <button
+                  data-testid="button-filter"
+                  type="button"
+                  className="button"
+                  onClick={ handleClickNumericFilter }
+                >
+                  Add filtro
+                </button>
               </div>
             </div>
             <div className="column navbar-item">
@@ -184,7 +213,14 @@ function Inputs() {
                     <div data-testid="filter" className="tag">
                       {filter.content}
                       <div className="buttons is-centered">
-                        <button type="button" className="delete is-small mb-2 " value={ filter.column } onClick={ handleClickAtivatedFilter }>X</button>
+                        <button
+                          type="button"
+                          className="delete is-small mb-2 "
+                          value={ filter.column }
+                          onClick={ handleClickAtivatedFilter }
+                        >
+                          X
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -201,7 +237,10 @@ function Inputs() {
                     >
                       {
                         ['name', ...listToOrder].map(
-                          (parameter) => <option key={ parameter } value={ parameter }>{parameter}</option>,
+                          (parameter) => (
+                            <option key={ parameter } value={ parameter }>
+                              {parameter}
+                            </option>),
                         )
                       }
                     </select>
@@ -209,11 +248,23 @@ function Inputs() {
                 </div>
                 <div className="navbar-item column is-6 ">
                   <label htmlFor="answer" className="radio is-small">
-                    <input data-testid="column-sort-input-asc" type="radio" name="answer" value="ASC" onClick={ handleRadio } />
+                    <input
+                      data-testid="column-sort-input-asc"
+                      type="radio"
+                      name="answer"
+                      value="ASC"
+                      onClick={ handleRadio }
+                    />
                     ASC
                   </label>
                   <label htmlFor="answer" className="radio is-small">
-                    <input data-testid="column-sort-input-desc" type="radio" name="answer" value="DESC" onClick={ handleRadio } />
+                    <input
+                      data-testid="column-sort-input-desc"
+                      type="radio"
+                      name="answer"
+                      value="DESC"
+                      onClick={ handleRadio }
+                    />
                     DESC
                   </label>
                 </div>
@@ -221,7 +272,14 @@ function Inputs() {
             </div>
             <div className="column navbar-item">
               <div className="buttons is-centered">
-                <button data-testid="column-sort-button" type="button" className="button" onClick={ handleClickOrder }>Ordenar</button>
+                <button
+                  data-testid="column-sort-button"
+                  type="button"
+                  className="button"
+                  onClick={ handleClickOrder }
+                >
+                  Ordenar
+                </button>
               </div>
             </div>
           </div>
