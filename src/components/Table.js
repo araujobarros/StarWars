@@ -116,7 +116,7 @@ function Table() {
 
     if (isPlanetCell === true) {
       return (
-        <td>
+        <td key={ row[field] }>
           <p className="td-content" ref={ createRef } data-testid="planet-name">
             {(width < MAXWIDTH) ? `${field}: ${row[field]}` : row[field]}
           </p>
@@ -124,7 +124,7 @@ function Table() {
       );
     } if (isFilmsCell === true) {
       return (
-        <td className="menu">
+        <td className="menu" key={ row[field] }>
           <p className="td-content" ref={ createRef }>
             { (width < MAXWIDTH) ? `${field}:` : ''}
           </p>
@@ -142,7 +142,7 @@ function Table() {
       );
     } if (isUrlCell === true) {
       return (
-        <td>
+        <td key={ row[field] }>
           <a href={ row[field] } ref={ createRef }>
             <p className="td-content">Mais informações</p>
           </a>
