@@ -117,7 +117,7 @@ function Table() {
     if (isPlanetCell === true) {
       return (
         <td>
-          <p className="td-content" ref={ createRef }>
+          <p className="td-content" ref={ createRef } data-testid="planet-name">
             {(width < MAXWIDTH) ? `${field}: ${row[field]}` : row[field]}
           </p>
         </td>
