@@ -10,7 +10,6 @@ function App() {
       <Inputs />
       <Table />
     </DataProvider>
-
   );
 }
 
