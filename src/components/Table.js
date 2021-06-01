@@ -23,9 +23,6 @@ function Table() {
       'Revenge of the Sith'],
   );
 
-  useEffect(() => {
-  }, [isLoading]);
-
   const filterByText = () => data.filter(
     (row) => row.name.includes(filters.filterByName.name),
   );
