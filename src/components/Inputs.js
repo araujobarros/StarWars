@@ -167,7 +167,6 @@ function Inputs() {
                     <select
                       data-testid="column-filter"
                       onChange={ (event) => handleChange(event, setcolumnFilter) }
-                      onSelect="teste"
                     >
                       {parameterList.map(
                         (parameter) => (
@@ -204,8 +203,8 @@ function Inputs() {
             </div>
             <div className="column navbar-item">
               <div className="navbar-item activated-filter">
-                {activatedFilters.map((filter) => (
-                  <div key={ filter } className="">
+                {activatedFilters.map((filter, index) => (
+                  <div key={ index } className="">
                     <div data-testid="filter" className="tag">
                       {filter.content}
                       <div className="buttons is-centered">
